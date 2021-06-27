@@ -13,6 +13,7 @@ ansible all gather_facts                        #add --limit <ip or hostname> to
 ansible-inventory --list -y                     #show inventory configuration
 ansible all -a "df -h"                          #running command on node
 ansible all -m apt -a "name=vim state=latest"   #install latest vim on all servers
+ansible all -m apt -a "name=vim state=latest"   become --ask-become-pass #install latest vim on all servers and becoming sudo
 ansible server1:server2 -m ping          #checking connectivity to 2 sepcific servers
 ansible-playbook playbook.yaml -i hosts –tags tag_name  #deploying playbook on hosts file from directory which we are in and running only hosts with Tag name as specified in command
 ansible-playbook playbook.yaml -l server1 –tags tag_name  #deploying playbook on specific server and running only actions with  Tag name as specified in command

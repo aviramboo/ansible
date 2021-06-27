@@ -1,0 +1,24 @@
+- hosts: all
+  become_user: root
+
+  tasks:
+
+
+    #delete the users
+    - name: delete several users
+      user:
+       name={{ item }}
+       state=absent
+      with_items:
+       - demouser1
+      tags: remove_user
+
+     #delete a group
+    - name:  delete a group
+      group:
+       name={{ item }}
+       state=absent
+      with_items:
+       - demogroup1
+      tags: remove_group   
+

@@ -1,0 +1,19 @@
+Add hosts ansible user to no password sudo with the folowing line:
+“user   ALL=NOPASSWD: ALL”
+
+ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+ansible servers-group -m service -a “name=httpd state=started”  #use service module to act on service state
+ansible all -m copy -a “src=/local_path dest=/host_pathpath”        #copy file from host to all server
+Ansible doc -l                                  #show all modules
+ansible-doc -s yum                              #show options for yum module usage
+ansible server-group -m ping -o                 #check connectivity to hostws on one liner
+ansible all -m shell -a “df -h”                 #running command on all hosts with shell module
+ansible all --list-hosts
+ansible all gather_facts                        #add --limit <ip or hostname> to show specific host
+ansible-inventory --list -y                     #show inventory configuration
+ansible all -a "df -h"                          #running command on node
+ansible all -m apt -a "name=vim state=latest"   #install latest vim on all servers
+ansible server1:server2 -m ping          #checking connectivity to 2 sepcific servers
+ansible-playbook playbook.yaml -i hosts –tags tag_name  #deploying playbook on hosts file from directory which we are in and running only hosts with Tag name as specified in command
+ansible-playbook playbook.yaml -l server1 –tags tag_name  #deploying playbook on specific server and running only actions with  Tag name as specified in command
+ansible-playbook playbook.yaml --list-tags                #deploy playbook and show all tags

@@ -18,3 +18,4 @@ ansible server1:server2 -m ping          #checking connectivity to 2 sepcific se
 ansible-playbook playbook.yaml -i hosts –tags tag_name  #deploying playbook on hosts file from directory which we are in and running only hosts with Tag name as specified in command
 ansible-playbook playbook.yaml -l server1 –tags tag_name  #deploying playbook on specific server and running only actions with  Tag name as specified in command
 ansible-playbook playbook.yaml --list-tags                #deploy playbook and show all tags
+ansible-playbook --tags <tag-name> --ask-become-pass playbook.yml
